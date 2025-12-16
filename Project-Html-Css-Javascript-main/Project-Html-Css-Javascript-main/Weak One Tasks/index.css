@@ -1,0 +1,177 @@
+/* Premium / Minimal professional stylesheet
+   - Clean neutral palette, refined type scale, consistent spacing
+   - Subtle elevated cards, price badges, crisp CTAs
+   - All behavior preserved (no HTML/JS changes)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#f6f7f9;
+  --panel:#ffffff;
+  --muted:#6b7280;
+  --text:#0f1724;
+  --brand:#1f7a57; /* slightly darker, more premium green */
+  --accent:#ffb100;
+  --surface-shadow: 0 8px 30px rgba(12,20,30,0.06);
+  --radius:14px;
+  --max-w:1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  scroll-behavior:smooth;
+}
+
+/* Layout container */
+.container{max-width:var(--max-w);margin:0 auto;padding:0 1.25rem}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);box-shadow:0 2px 8px rgba(15,23,42,0.03);display:flex;align-items:center;padding:0.6rem 1rem}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;padding:0}
+.logo{display:flex;align-items:center;gap:0.85rem}
+.logo img{width:48px;height:48px;border-radius:10px;object-fit:cover}
+.logo h1{font-size:1rem;color:var(--brand);font-weight:700}
+
+.logo{order:0}
+#nav-links{display:flex;gap:1.2rem;align-items:center;margin-left:auto}
+#nav-links a{color:var(--text);text-decoration:none;padding:0.45rem 0.6rem;border-radius:8px;font-weight:600;transition:color .15s ease,background .15s ease}
+#nav-links a:hover{background:transparent;color:var(--brand);transform:translateY(-1px)}
+.menu-toggle{display:none;font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:68vh;display:flex;align-items:center;padding:3.25rem 0;background-image:url('imeges/carrot home.jpg');background-size:cover;background-position:center;border-bottom-left-radius:22px;border-bottom-right-radius:22px;position:relative}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,20,0.05),rgba(255,255,255,0.12));mix-blend-mode:multiply}
+.hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center;padding:3rem;border-radius:12px}
+.hero h2{font-size:2.6rem;color:#072034;margin-bottom:.4rem;font-weight:700}
+.hero p{color:var(--muted);font-size:1.05rem;margin-bottom:1.2rem}
+.hero .btn{display:inline-block;background:linear-gradient(180deg,var(--accent),#f59e00);color:#071018;padding:.9rem 1.2rem;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(255,177,0,0.09);transition:transform .14s ease}
+.hero .btn:hover{transform:translateY(-4px)}
+
+/* PRODUCTS */
+.products{padding:3.25rem 0}
+.products .container{padding-top:1rem}
+.products h2{font-size:1.45rem;color:var(--brand);margin-bottom:.6rem}
+.products p.lead{color:var(--muted);margin-bottom:1rem}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{background:var(--panel);border-radius:var(--radius);overflow:hidden;box-shadow:var(--surface-shadow);position:relative;display:flex;flex-direction:column}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.card .card-body{padding:1rem 1.05rem 1.25rem;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.card h3{font-size:1.05rem;margin:0 0 .4rem}
+.card p{color:var(--muted);font-weight:600}
+
+/* price badge */
+.card .price{position:absolute;top:12px;right:12px;background:linear-gradient(180deg,var(--brand),#176a4f);color:#fff;padding:.4rem .65rem;border-radius:10px;font-weight:700;box-shadow:0 8px 20px rgba(18,52,40,0.12)}
+
+/* small product actions */
+.card .card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem}
+.card .add-btn{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:.45rem .7rem;border-radius:10px;font-weight:700;cursor:pointer;color:var(--brand)}
+
+/* ABOUT */
+.about{padding:3rem 0;background:transparent}
+.about{display:flex;align-items:center;justify-content:center}
+.about .about-inner{background:linear-gradient(180deg,rgba(255,255,255,0.96),#fff);max-width:980px;width:100%;padding:2rem;border-radius:16px;box-shadow:var(--surface-shadow);display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:center}
+.about h2{margin:0 0 .25rem;font-size:1.6rem}
+.about p{color:var(--muted);margin:0;font-size:1.02rem}
+.about .about-text{padding-right:0}
+
+/* If viewport is wide, allow a two-column layout (keeps design balanced when side content is added later) */
+@media (min-width:1000px){
+  .about .about-inner{grid-template-columns:1fr 380px}
+}
+
+/* In case HTML doesn't include .about-inner, provide graceful fallback */
+.about > h2, .about > p{max-width:70ch;margin:0 auto;text-align:center}
+
+
+/* CONTACT */
+.contact{padding:3rem 0;background:transparent}
+.contact h2{font-size:1.4rem;color:var(--brand);text-align:center;margin-bottom:1rem}
+
+.contact form{
+  max-width:920px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  padding:1.25rem;
+  background:var(--panel);
+  border-radius:12px;
+  box-shadow:var(--surface-shadow);
+  align-items:start;
+}
+
+.contact input,.contact textarea{
+  width:100%;
+  padding:.95rem .9rem;
+  border-radius:10px;
+  border:1px solid #e6ebf0;
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  transition:box-shadow .15s ease,transform .12s ease;
+  font-size:.98rem;
+}
+.contact input::placeholder{color:#98a0aa}
+.contact input:focus,.contact textarea:focus{box-shadow:0 10px 30px rgba(31,122,87,0.06);border-color:rgba(31,122,87,0.18);transform:translateY(-1px)}
+.contact textarea{grid-column:1 / -1;min-height:150px;resize:vertical}
+
+/* CTA button */
+.contact .btn{
+  background:linear-gradient(180deg,var(--brand),#176a4f);
+  color:#fff;
+  border:none;
+  padding:.9rem 1.1rem;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(23,106,79,0.12);
+  transition:transform .12s ease,box-shadow .12s ease,opacity .12s ease;
+  justify-self:end;
+}
+.contact .btn:hover{transform:translateY(-3px);opacity:.98}
+
+/* Small helper text under inputs (if you add them later) */
+.contact .help{grid-column:1 / -1;color:var(--muted);font-size:.92rem;margin-top:.45rem}
+
+@media (max-width:800px){
+  .contact form{grid-template-columns:1fr;padding:1rem}
+  .contact .btn{justify-self:stretch}
+}
+
+/* FOOTER */
+footer{background:#071826;color:#c9d7d3;padding:2rem 0}
+footer .container{display:flex;align-items:center;justify-content:space-between}
+footer p{margin:0;font-size:.95rem}
+.socials a{color:#a8bebe;margin-left:.6rem}
+
+#backToTop{position:fixed;right:20px;bottom:20px;background:var(--brand);color:#fff;border:none;padding:10px;border-radius:999px;box-shadow:0 8px 30px rgba(6,18,14,0.18);cursor:pointer;display:none}
+
+/* Responsiveness */
+@media (max-width:1000px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .about .container{flex-direction:column}
+  .contact form{grid-template-columns:1fr}
+}
+
+@media (max-width:640px){
+  .menu-toggle{display:block}
+  #nav-links{display:none;position:fixed;right:16px;top:64px;background:var(--panel);padding:1rem;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.08);flex-direction:column}
+  #nav-links.show{display:flex}
+  .grid{grid-template-columns:1fr}
+  .hero{min-height:52vh;padding:2rem 0}
+  .hero h2{font-size:1.6rem}
+}
+
+/* Accessibility */
+a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(31,122,87,0.12);outline-offset:3px}
+
+/* helper */
+.muted{color:var(--muted)}
+
